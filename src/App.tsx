@@ -1,20 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Loader } from './components/Loader';
+import { ErrorMessage } from './components/ErrorMessage';
 import { Product } from './components/product';
-import { products } from './data/products';
-
+import { useProducts } from './hooks/products';
+import { Modal } from './components/Modal';
+import { CreateProduct } from './components/CreateProduct';
 
 function App() {
-  const [count, setCount] = useState(0);
-
+  const {products, error, loading} = useProducts();
   return (
     <div className='container mx-auto max-w-2xl pt-5'>
+      {error && <ErrorMessage error={error} />}
+      {loading && <Loader  /> }
       {products.map(product => <Product product={product} key={product.id} />)}
-
-      {/* <Product product={products[0]} />
-      <Product product={products[1]}/> */}
-
+      <Modal>
+        <CreateProduct/>
+      </Modal>
     </div>
-    
+
   )
 }
 
