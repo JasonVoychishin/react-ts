@@ -8,7 +8,7 @@ function App() {
     <>
       <Navigation/>
       <Routes>
-        <Route path='/' element={<ProductsPage />} />
+        <Route path='/react-ts' element={<ProductsPage />} />
         <Route path='/about' element={<AboutPage />} />
       </Routes>
     </>
